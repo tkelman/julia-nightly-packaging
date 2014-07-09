@@ -1,8 +1,7 @@
 environment:
   matrix:
+  - JULIAVERSION: "win32"
   - JULIAVERSION: "win64"
-    allow_failures:
-      - JULIAVERSION: "win32"
 
 install:
 # Download most recent Julia Windows binary
