@@ -10,4 +10,5 @@ install:
   - C:\projects\julia-binary.exe /S /D=C:\projects\julia
 
 build_script:
+  - cd C:\projects\julia\share\julia && git apply C:\projects\julia-nightly-packaging\file-test.patch
   - cd C:\projects\julia\share\julia\test && C:\projects\julia\bin\julia runtests.jl all
