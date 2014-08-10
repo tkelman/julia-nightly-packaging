@@ -1,0 +1,16 @@
+diff --git a/test/file.jl b/test/file.jl
+index 4290198..8ad426a 100644
+--- a/test/file.jl
++++ b/test/file.jl
+@@ -42,6 +42,10 @@ let skew = 10  # allow 10s skew
+     now   = time()
+     mfile = mtime(file)
+     mdir  = mtime(dir)
++    println("now = $now, mfile = $mfile, mdir = $mdir")
++    println("now - mfile = $(now - mfile)")
++    println("now - mdir = $(now - mdir)")
++    println("mfile - mdir = $(mfile - mdir)")
+     @test abs(now - mfile) <= skew && abs(now - mdir) <= skew && abs(mfile - mdir) <= skew
+ end
+ #@test int(time()) >= int(mtime(file)) >= int(mtime(dir)) >= 0 # 1 second accuracy should be sufficient
+ 
