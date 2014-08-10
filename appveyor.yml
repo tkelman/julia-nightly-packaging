@@ -3,6 +3,10 @@ environment:
   - JULIAVERSION: "win32"
   - JULIAVERSION: "win64"
 
+init:
+# Carriage returns are bad
+  - git config --global core.autocrlf input
+
 install:
 # Download most recent Julia Windows binary
   - ps: (new-object net.webclient).DownloadFile($("http://status.julialang.org/download/"+$env:JULIAVERSION), "C:\projects\julia-binary.exe")
