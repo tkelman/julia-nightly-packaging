@@ -1,8 +1,13 @@
 diff --git a/test/file.jl b/test/file.jl
-index 4290198..8ad426a 100644
+index 2338b9e..299b958 100644
 --- a/test/file.jl
 +++ b/test/file.jl
-@@ -42,6 +42,10 @@ let skew = 10  # allow 10s skew
+@@ -37,10 +37,14 @@ chmod(file, filemode(file) | 0o222)
+ # files and is thus zero in this case.
+ @windows_only @test filesize(dir) == 0
+ @unix_only @test filesize(dir) > 0
+-let skew = 10  # allow 10s skew
++let skew = 20  # allow 20s skew
      now   = time()
      mfile = mtime(file)
      mdir  = mtime(dir)
