@@ -1,7 +1,7 @@
 environment:
   matrix:
-  - JULIAVERSION: "win32"
-  - JULIAVERSION: "win64"
+  - JULIAVERSION: "x86/0.4/julia-0.4.0-74b8a6b036-win32.exe"
+  - JULIAVERSION: "x64/0.4/julia-0.4.0-74b8a6b036-win64.exe"
 
 init:
 # Carriage returns are bad
@@ -9,10 +9,10 @@ init:
 
 install:
 # Download most recent Julia Windows binary
-  - ps: (new-object net.webclient).DownloadFile($("http://status.julialang.org/download/"+$env:JULIAVERSION), "C:\projects\julia-binary.exe")
+  - ps: (new-object net.webclient).DownloadFile($("https://julianightlies.s3.amazonaws.com/bin/winnt/"+$env:JULIAVERSION), "C:\projects\julia-binary.exe")
 # Run installer silently, output to C:\projects\julia
   - C:\projects\julia-binary.exe /S /D=C:\projects\julia
 
 build_script:
-  - cd C:\projects\julia\share\julia && git apply C:\projects\julia-nightly-packaging\file-test.patch
+#  - cd C:\projects\julia\share\julia && git apply C:\projects\julia-nightly-packaging\file-test.patch
   - cd C:\projects\julia\share\julia\test && C:\projects\julia\bin\julia runtests.jl all
