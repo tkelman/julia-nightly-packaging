@@ -1,7 +1,7 @@
 environment:
   matrix:
-  - JULIAVERSION: "x86/0.4/julia-0.4.0-1f9a5f00b8-win32.exe"
-  - JULIAVERSION: "x64/0.4/julia-0.4.0-1f9a5f00b8-win64.exe"
+  - JULIAVERSION: "x86/0.4/julia-0.4.0-5e7c424ecb-win32.exe"
+  - JULIAVERSION: "x64/0.4/julia-0.4.0-5e7c424ecb-win64.exe"
 
 init:
 # Carriage returns are bad
@@ -14,6 +14,7 @@ install:
   - C:\projects\julia-binary.exe /S /D=C:\projects\julia
 
 build_script:
+  - dir C:\projects\julia\lib\julia
 # temporarily disable backtrace test, failing right now for win64 on master
   - sed -i 's/"backtrace",//' C:/projects/julia/share/julia/test/runtests.jl
 #  - cd C:\projects\julia\share\julia && git apply C:\projects\julia-nightly-packaging\file-test.patch
